@@ -1,9 +1,10 @@
 #![cfg_attr(not(feature = "std"), no_std, no_main)]
 
+mod contracts; // bring in contracts
+
 #[ink::contract]
 mod market_chain {
     use ink::prelude::vec::Vec;
-    use ink::prelude::format;
     use ink::storage::Mapping;
     use scale::{Decode, Encode};
     
