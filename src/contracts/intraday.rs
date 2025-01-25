@@ -6,9 +6,8 @@ use ink_lang as ink;
 pub mod Intraday {
     #[ink(storage)]
     pub struct IntradayContract {
-        // Enhanced storage struct with new fields
         trades: ink_storage::collections::HashMap<TradeId, TradeDetails>,
-    }
+    }   
 
 
     #[derive(scale::Encode, scale::Decode, Debug, Clone, PartialEq)]
@@ -51,6 +50,11 @@ pub mod Intraday {
         #[ink(message)]
         pub fn get_trade_details(&self, trade_id: TradeId) -> Option<TradeDetails> {
             self.trades.get(&trade_id).cloned()
+        }
+
+        #[ink(message)]
+        pub fn delete_trade(&mut self, trade_id: TradeId) -> bool {
+            self.trades.remove(&trade_id).is_some()
         }
     }
 }
