@@ -1,0 +1,24 @@
+[package]
+name = "market_chain"
+version = "0.1.0"
+authors = ["James Sadler"]
+edition = "2021"
+
+[dependencies]
+ink = { version = "5.1.0", default-features = false }
+
+[dev-dependencies]
+ink_e2e = { version = "5.1.0" }
+
+[lib]
+path = "src/lib.rs"
+
+[features]
+default = ["std"]
+std = [
+    "ink/std",
+    "scale/std",
+    "scale-info/std",
+]
+ink-as-dependency = []
+e2e-tests = []
